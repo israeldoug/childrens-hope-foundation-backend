@@ -1,0 +1,1931 @@
+﻿/* Inherit common.css */
+
+
+
+/* --- Hero Section Styling --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 37.5rem;
+    background: url('Images/generation-8fa11c03-4d2e-4a95-9d53-02609558d9b7.png') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-md);
+    overflow: hidden;
+}
+
+/* Overlay for text readability */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 30, 48, 0.55);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 50rem;
+}
+
+.hero-content h1 {
+    font-family: var(--font-primary);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    /* Responsive typography */
+    margin-bottom: var(--space-md);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Softer shadow */
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    margin-bottom: var(--space-lg);
+    /* Increased spacing */
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+}
+
+/* --- Hero Headline Word Animation --- */
+@keyframes subtleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.animated-word {
+    display: inline-block;
+    opacity: 0;
+    animation: subtleFadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animated-word:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.animated-word:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+/* --- Donate Button Styling (Hero Section) --- */
+.donate-button {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.donate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4);
+    background: var(--primary-dark);
+}
+
+.donate-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Active state for main donate button (press effect) */
+.donate-button:active {
+    transform: translateY(0) scale(0.98);
+    /* Simulates a press */
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* --- Basic Header & Navigation Button (Modernized) --- */
+.main-header {
+    width: 100%;
+    padding: 1rem 5%;
+    background-color: rgba(255, 255, 255, 0.98);
+    /* Almost opaque */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    /* Minimal border-like shadow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: padding 0.3s ease;
+}
+
+.main-header .logo {
+    font-family: var(--font-primary);
+    font-size: 1.8em;
+    font-weight: 700;
+    /* Standardized to bold (matches donate.css) */
+    color: var(--secondary);
+    /* Primary Text Color */
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+/* --- Navigation Links Styling --- */
+.main-header .main-nav {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+    margin-left: 2.5rem;
+    transition: none;
+}
+
+.main-header .main-nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    text-align: center;
+    /* User request */
+    display: inline-block;
+    /* Ensures text-align works if width is set */
+}
+
+.main-header .main-nav a:hover,
+.main-header .main-nav a.active {
+    background: var(--bg-body);
+    color: var(--primary);
+}
+
+.main-header .nav-donate-button {
+    background-color: transparent;
+    color: var(--secondary);
+    /* Primary Accent Green */
+    border: 2px solid var(--primary);
+    /* Primary Accent Green */
+    padding: 0.625rem 1.25rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: var(--fw-semi);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.main-header .nav-donate-button:hover {
+    background-color: var(--bg-body);
+    /* Primary Accent Green */
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--shadow-rgb), 0.1);
+    border-color: white;
+}
+
+/* Active state for nav donate button (press effect) */
+.main-header .nav-donate-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* --- Main Section Styling (Subtler Separators) --- */
+main section {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    /* Removed border-bottom for cleaner look based on user feedback */
+    border-bottom: none;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Removed backdrop-filter for performance */
+}
+
+main section:last-child {
+    border-bottom: none;
+}
+
+main section:nth-child(even) {
+    background-color: rgba(248, 249, 250, 0.95);
+    /* Slightly off-white for contrast, opaque for perf */
+}
+
+/* --- About Section Specific Styling (UPDATED for Less Texty) --- */
+.about-section {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    background-color: var(--bg-surface);
+    /* Solid background */
+    overflow: hidden;
+    /* Prevent negative-margin children from causing horizontal scroll */
+}
+
+.about-section h2 {
+    font-family: var(--font-primary);
+    font-size: 2.5em;
+    color: var(--secondary);
+    /* Primary Text Color */
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.about-section .container {
+    max-width: 62.5rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.about-content {
+    display: block;
+    /* Removed flex since carousel is now inside */
+    /* gap: var(--space-lg); Removed */
+    /* align-items: center; Removed */
+    text-align: left;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 18.75rem;
+}
+
+/* Sub-headings within About text */
+.about-text h3 {
+    font-family: var(--font-primary);
+    font-size: 1.3em;
+    color: var(--secondary);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+    /* Reduced margin for shorter paragraphs */
+    color: var(--secondary-light);
+    /* Secondary Text Color */
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-sm);
+    margin-bottom: 1.5625rem;
+}
+
+.about-text ul li {
+    position: relative;
+    padding-left: 1.5625rem;
+    margin-bottom: 0.625rem;
+    font-size: 1.05em;
+    /* Slightly larger for bullet points */
+    color: var(--secondary-light);
+    /* Secondary Text Color */
+}
+
+.about-text ul li::before {
+    content: '\2713';
+    /* Unicode Checkmark */
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    /* Primary Accent Green */
+    font-weight: var(--fw-semi);
+    font-size: 1.2em;
+    line-height: 1;
+    top: 2px;
+}
+
+/* --- NEW "ICON FOCUS" DESIGN: Impact Snapshot Section --- */
+
+.impact-snapshot {
+    /* The container is now simpler, acting as a standard section */
+    padding: var(--space-lg) 0;
+    margin: 3.75rem auto;
+    max-width: 68.75rem;
+    text-align: center;
+}
+
+.impact-snapshot h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary);
+    font-size: 2.2em;
+    margin: 0 auto 2.8125rem auto;
+    padding-bottom: var(--space-sm);
+    position: relative;
+    display: inline-block;
+}
+
+.impact-snapshot h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3.75rem;
+    height: 0.25rem;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* The Grid for the Stat Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    text-align: left;
+}
+
+/* Individual Stat Cards */
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: transparent;
+    /* Remove heavy background */
+    padding: 1rem 0;
+    /* Minimal separators */
+    border-bottom: none;
+    /* Flattened */
+    border-radius: 0;
+    box-shadow: none;
+    /* Flattened */
+    transition: transform 0.3s ease;
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-item:hover {
+    transform: translateX(5px);
+    /* Slight nudge right */
+    box-shadow: none;
+}
+
+/* The colored circle for the icon */
+.stat-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+    border-radius: 12px;
+    /* Soft square > Circle for modern feel */
+    display: grid;
+    place-items: center;
+    background-color: var(--icon-bg);
+    opacity: 0.9;
+}
+
+/* Icon Styling */
+.stat-icon {
+    font-size: 2.2em;
+    color: var(--icon-color);
+    /* Uses color from HTML style attribute */
+}
+
+/* Wrapper for the text */
+.stat-text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stat Number Styling */
+.stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--secondary);
+    margin: 0;
+}
+
+/* Stat Label Styling */
+.stat-label {
+    font-size: 1.1em;
+    color: var(--secondary-light);
+    margin: 0;
+}
+
+/* --- Carousel Specific Styling --- */
+.about-carousel {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    max-width: 100%;
+    height: 25rem;
+    border-radius: 16px;
+    /* More rounded */
+    box-shadow: var(--shadow-sm);
+    /* Much lighter shadow */
+    overflow: hidden;
+    background: var(--bg-surface);
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    /* FIX: Prevents sub-pixel rendering artifacts during transform */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.about-carousel:hover {
+    transform: translateY(-4px);
+    /* Subtle lift */
+    box-shadow: var(--shadow-md);
+}
+
+.about-carousel-inner {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-carousel-inner img {
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    transform: scale(1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-carousel:hover .about-carousel-inner img {
+    transform: scale(1.05);
+}
+
+/* Carousel Controls Styling */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--secondary);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 50%;
+    z-index: 20;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-carousel:hover .carousel-control {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-control.prev {
+    left: 1.25rem;
+    transform: translateX(-10px) translateY(-50%);
+}
+
+.carousel-control.next {
+    right: 1.25rem;
+    transform: translateX(10px) translateY(-50%);
+}
+
+.about-carousel:hover .carousel-control.prev {
+    transform: translateX(0) translateY(-50%);
+}
+
+.about-carousel:hover .carousel-control.next {
+    transform: translateX(0) translateY(-50%);
+}
+
+.carousel-control:hover {
+    background: var(--bg-surface);
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(var(--shadow-rgb), 0.15);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Active state for controls (press effect) */
+.carousel-control:active {
+    background-color: var(--bg-surface);
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 2px 6px rgba(var(--shadow-rgb), 0.1);
+}
+
+/* Add progress indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--space-xs);
+    z-index: 20;
+}
+
+.carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-indicator.active {
+    background: var(--bg-surface);
+    transform: scale(1.2);
+}
+
+/* --- Animation for Scroll-in Effects --- */
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(1.875rem);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Impact Section Specific Styling (Modern Grid) --- */
+.impact-section {
+    overflow: hidden;
+    padding: 5rem 1.25rem;
+    background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-body) 100%);
+    position: relative;
+    min-height: auto;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: var(--space-md);
+    max-width: 75rem;
+    margin: 3.75rem auto 0;
+
+    position: relative;
+}
+
+.impact-item {
+    width: 100%;
+    background: var(--bg-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Very subtle border */
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: translateY(0) translateZ(0);
+    will-change: transform, box-shadow;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.impact-item-image-wrapper {
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-item-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.impact-item-content {
+    flex: 1;
+    padding: 1.5625rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem;
+    min-height: 12.5rem;
+    /* Ensure minimum height for consistency */
+}
+
+.impact-item-content h3 {
+    font-family: var(--font-primary);
+    font-size: 1.3em;
+    color: var(--secondary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.impact-snapshot h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3.75rem;
+    height: 0.25rem;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+/* This makes the underline expand on hover */
+.impact-snapshot:hover h3::after {
+    width: 100%;
+}
+
+.impact-item-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--secondary-light);
+    margin: 0;
+    flex-grow: 1;
+    /* Allow paragraph to take up remaining space */
+}
+
+.impact-item .read-more-button {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 0;
+    background: none;
+    color: var(--primary);
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 0.95em;
+}
+
+.impact-item .read-more-button:hover {
+    border-color: var(--primary);
+    color: var(--primary-dark);
+    transform: none;
+    /* No movement, just underline */
+}
+
+/* Ensure proper spacing between paragraphs if multiple exist */
+.impact-item-content p+p {
+    margin-top: 0.75rem;
+}
+
+/* --- Fund Specific Need Section Styling --- */
+.fund-section {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    background-color: var(--bg-surface);
+    /* Solid background */
+}
+
+.fund-section h2 {
+    font-family: var(--font-primary);
+    font-size: 2.5em;
+    color: var(--secondary);
+    /* Primary Text Color */
+    margin-bottom: 1.25rem;
+}
+
+.fund-section p {
+    font-size: 1.1em;
+    color: var(--secondary-light);
+    /* Secondary Text Color */
+    max-width: 50rem;
+    margin: 0 auto 3.125rem auto;
+    /* More margin below intro text */
+}
+
+.fund-goal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+    /* Responsive grid for items */
+    gap: var(--space-md);
+    /* Gap between grid items */
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.fund-goal-item {
+    background: var(--bg-surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fund-goal-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Update Contribute Button to be cleaner */
+.contribute-button {
+    display: inline-block;
+    margin-top: auto;
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-align: center;
+    transition: all 0.2s ease;
+    width: fit-content;
+    margin: 1rem;
+    /* Spacing from image/content */
+}
+
+.contribute-button:hover {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.2);
+}
+
+.fund-goal-image-wrapper {
+    width: 100%;
+    height: 11.25rem;
+    /* Fixed height for consistent image sizing */
+    /* Fixed height for consistent image sizing */
+    overflow: hidden;
+}
+
+.fund-goal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the area, cropping if necessary */
+    display: block;
+}
+
+.fund-goal-content {
+    padding: var(--space-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.fund-goal-content h3 {
+    font-family: var(--font-primary);
+    font-size: 1.25em;
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+}
+
+.fund-goal-content p {
+    font-size: 0.95em;
+    color: var(--secondary-light);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+/* --- Learn More & Contribute Now Button Styles (Match Donate Page) --- */
+.impact-item .read-more-button,
+.contribute-button {
+    background: var(--bg-body);
+    color: var(--secondary);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.3s, transform 0.2s;
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.impact-item .read-more-button:hover,
+.impact-item .read-more-button:focus,
+.impact-item .read-more-button:active {
+    background: var(--bg-body);
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+}
+
+.contribute-button:hover,
+.contribute-button:focus,
+.contribute-button:active {
+    background: var(--bg-body);
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+    transform: none;
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 62rem) {
+    .impact-grid {
+        /* This ensures a responsive 2-column layout on tablets without complex margins */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-md);
+    }
+
+    .impact-item {
+        width: 100%;
+        /* Let the grid manage the width */
+        margin: 0;
+        /* Remove all margins to prevent conflicts */
+    }
+
+    /* Media Queries for About Section Responsiveness */
+    .about-content {
+        flex-direction: column;
+        /* Stack text and image vertically */
+        gap: var(--space-md);
+    }
+
+    .about-text,
+    .about-carousel {
+        /* Changed from .about-image */
+        flex: auto;
+        /* Reset flex to default stacking behavior */
+        min-width: unset;
+        /* Remove min-width constraint */
+    }
+
+    .about-section h2 {
+        font-size: 2em;
+    }
+}
+
+
+
+
+@media (max-width: 37.5rem) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        /* Stack stats vertically on very small screens */
+        gap: 1.25rem;
+        /* Adjust gap when stacked */
+    }
+
+    .stat-item {
+        min-width: 100%;
+        margin-bottom: 0;
+        /* No bottom margin needed when stacked with gap */
+    }
+
+    .impact-snapshot h3 {
+        font-size: 1.8em;
+        /* Adjust heading size for smaller screens */
+    }
+
+    .stat-number {
+        font-size: 2.5em;
+        /* Adjust number size for smaller screens */
+    }
+
+    .stat-icon {
+        font-size: 2.2em;
+        /* Adjust icon size for smaller screens */
+    }
+
+    .impact-snapshot {
+        padding: 1.875rem 1.25rem;
+        /* Reduces side padding */
+    }
+
+    .stat-item {
+        padding: var(--space-md);
+    }
+}
+
+#menu-donate-btn {
+    display: none;
+}
+
+@media (max-width: 30rem) {
+
+    /* --- General small-screen adjustments --- */
+    .hero-section {
+        min-height: auto;
+        height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .donate-button {
+        padding: 0.75rem 1.25rem;
+        font-size: 1em;
+        border-radius: 10px;
+    }
+
+    .main-header .nav-donate-button {
+        font-size: 0.8em;
+        padding: 0.5rem 0.9375rem;
+    }
+
+    #header-donate-btn {
+        display: none;
+    }
+
+    #menu-donate-btn {
+        display: block;
+    }
+
+    .main-header .logo {
+        margin-left: 1.25rem;
+    }
+
+    /* --- FIX: Reduce compounding padding on About section --- */
+    .about-section {
+        padding: var(--space-lg) 0.75rem;
+    }
+
+    .about-section h2 {
+        font-size: 1.8em;
+    }
+
+    .about-section .container {
+        padding: 0 0.25rem;
+    }
+
+    .about-text p,
+    .about-text ul li {
+        font-size: 0.95em;
+    }
+
+    /* --- FIX: Let Impact Snapshot break out of narrow parent --- */
+    .impact-snapshot {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 1.25rem 0.5rem;
+    }
+
+    .impact-snapshot h3 {
+        font-size: 1.6em;
+        margin-bottom: 1.5625rem;
+    }
+
+    .stats-grid {
+        gap: 0.9375rem;
+    }
+
+    .stat-number {
+        font-size: 2em;
+    }
+
+    .stat-icon {
+        font-size: 1.8em;
+    }
+
+    .stat-label {
+        font-size: 1em;
+    }
+
+
+
+    .about-carousel {
+        height: 250px;
+    }
+
+    /* --- Impact Section with Text Truncation --- */
+    .impact-section .impact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        align-items: stretch;
+
+    }
+
+    .impact-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .impact-item-content {
+        padding: 0.9375rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        /* This makes the content area fill the card */
+    }
+
+    .impact-item-content h3 {
+        font-size: 0.85em;
+        line-height: 1.3;
+        hyphens: auto;
+        word-wrap: break-word;
+    }
+
+    .impact-item-content p {
+        font-size: 0.85em;
+        line-height: 1.5;
+        /* This is the key change for text truncation */
+        overflow: hidden;
+        display: -webkit-box;
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+        /* Limit text to 4 lines */
+        -webkit-box-orient: vertical;
+        hyphens: auto;
+        word-wrap: break-word;
+    }
+
+    .impact-item .read-more-button {
+        margin-top: auto;
+        /* Pushes button to the very bottom */
+        align-self: center;
+    }
+
+    .stat-item {
+        padding: 15px;
+        /* Reduces the card's internal space */
+        gap: 12px;
+        /* Reduces the gap between icon and text */
+        align-items: center;
+        /* Keeps vertical alignment tidy */
+    }
+
+    /* This allows the text container to shrink as needed */
+    .stat-text-wrapper {
+        min-width: 0;
+    }
+
+    .stat-icon-wrapper {
+        /* Make the icon circle even smaller */
+        width: 48px;
+        height: 48px;
+    }
+
+    .stat-icon {
+        /* Adjust icon size to fit the smaller circle */
+        font-size: 1.7em;
+    }
+
+    .stat-number {
+        /* Further reduce font size to prevent overflow */
+        font-size: 1.8em;
+    }
+
+    .stat-label {
+        /* Adjust label size for balance */
+        font-size: 0.9em;
+    }
+
+    /* --- FINAL FIX: Fund a Need Section two-column layout --- */
+    .fund-goal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 5px;
+        align-items: stretch;
+    }
+
+    /* This stacks the card vertically */
+    .fund-goal-item {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* This tells the TEXT block to appear FIRST */
+    .fund-goal-item .fund-goal-content {
+        order: 1;
+        text-align: center;
+        width: 100%;
+        padding: 8px 6px;
+    }
+
+    .fund-goal-item .fund-goal-content h3 {
+        font-size: 0.85em;
+        line-height: 1.3;
+        margin-bottom: 4px;
+        margin-top: 0;
+    }
+
+    .fund-goal-item .fund-goal-content p {
+        font-size: 0.75em;
+        line-height: 1.4;
+        margin-bottom: 0;
+    }
+
+    /* This tells the IMAGE/BUTTON block to appear SECOND */
+    .fund-goal-item .fund-goal-left {
+        order: 2;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+    /* Make the image and button fit the narrow card */
+    .fund-goal-item .fund-goal-carousel {
+        width: 100%;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .fund-goal-item .contribute-button {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.8em;
+        padding: 6px 8px;
+    }
+}
+
+/* --- New Styles for Fund Goal Carousel --- */
+.fund-goal-carousel {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.fund-goal-carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.fund-goal-carousel img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.fund-goal-carousel button.carousel-prev,
+.fund-goal-carousel button.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(44, 62, 80, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 3;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.fund-goal-carousel button.carousel-prev {
+    left: 10px;
+}
+
+.fund-goal-carousel button.carousel-next {
+    right: 10px;
+}
+
+.fund-goal-carousel button:hover {
+    opacity: 1;
+}
+
+.fund-goal-carousel button.carousel-prev,
+.fund-goal-carousel button.carousel-next {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.fund-goal-carousel:hover button.carousel-prev,
+.fund-goal-carousel:hover button.carousel-next {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 102;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease;
+}
+
+.hamburger.open span:first-child {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:last-child {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* REPLACE your existing @media (max-width: 700px) block with this one */
+@media (max-width: 43.75rem) {
+    .main-header {
+        position: relative;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Take the logo out of the flow and center it */
+    .main-header .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.3em;
+        /* Adjusted for better fit */
+        white-space: nowrap;
+        /* Prevents "Children's Hope" from wrapping to a new line */
+        flex: none;
+        /* Remove the property that caused squeezing */
+    }
+
+    /* Ensure hamburger and donate button are clickable */
+    .hamburger {
+        display: flex;
+        z-index: 102;
+    }
+
+    .main-header .nav-donate-button {
+        order: 2;
+        font-size: 0.9em;
+        padding: 8px 15px;
+        z-index: 102;
+    }
+
+    /* Styles for the mobile navigation dropdown */
+    .main-header .main-nav-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-header .main-nav {
+        display: none;
+        padding: 15px 0;
+        margin: 0;
+    }
+
+    .main-header .main-nav.open {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-header .main-nav a {
+        padding: 10px 20px;
+        width: 90%;
+        text-align: center;
+    }
+}
+
+/* --- NEW: Switches "Fund a Need" to a list view on smaller screens --- */
+/* --- Corrected layout for "Fund a Need" on smaller screens --- */
+@media (max-width: 48rem) {
+
+
+
+    /* This turns the grid into a single-column list */
+    .fund-goal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* This arranges the left (image/button) and right (text) columns */
+    .fund-goal-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        /* Aligns top of image with top of text */
+        text-align: left;
+        padding: 15px;
+        gap: 15px;
+        /* Space between left and right columns */
+    }
+
+    /* This styles the new left-side container */
+    .fund-goal-left {
+        display: flex;
+        flex-direction: column;
+        /* Stacks image and button vertically */
+        align-items: center;
+        /* Centers the button horizontally */
+        width: 120px;
+        /* Gives a fixed width to the left column */
+        flex-shrink: 0;
+    }
+
+    /* Styles the image wrapper */
+    .fund-goal-item .fund-goal-carousel {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+    }
+
+    /* Styles the button under the image */
+    .fund-goal-item .contribute-button {
+        margin-top: 10px;
+        /* Space between image and button */
+        width: 100%;
+        /* Makes button fill the width of the left column */
+        text-align: center;
+        font-size: 0.80em;
+        padding: 12px 8px;
+        white-space: nowrap;
+    }
+
+    /* Styles the right-side text content */
+    .fund-goal-item .fund-goal-content {
+        padding: 0;
+    }
+
+    /* Styles the heading */
+    .fund-goal-item .fund-goal-content h3 {
+        font-size: 1.15em;
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    /* IMPORTANT: This brings your description text back */
+    .fund-goal-item .fund-goal-content p {
+        display: block;
+        /* Ensures the paragraph is visible */
+        font-size: 0.9em;
+        line-height: 1.5;
+        margin: 0;
+        color: var(--secondary-light);
+    }
+}
+
+/* --- NEW: Stacks the list view vertically on the smallest screens --- */
+@media (max-width: 30rem) {
+
+    /* 1. Stack the columns vertically instead of side-by-side */
+    .fund-goal-item {
+        flex-direction: column;
+        /* This is the key change */
+        align-items: center;
+        /* Center the items horizontally */
+        gap: 15px;
+    }
+
+    /* 2. Remove the fixed width from the left column */
+    .fund-goal-left {
+        width: auto;
+    }
+
+    /* 3. Make the image fit better when stacked */
+    .fund-goal-item .fund-goal-carousel {
+        width: 140px;
+        height: 140px;
+    }
+
+    /* 4. Tighten text spacing */
+    .fund-goal-item .fund-goal-content {
+        text-align: center;
+        padding: 6px 4px;
+    }
+
+    .fund-goal-item .contribute-button {
+        font-size: 0.8em;
+    }
+}
+
+/* --- POPUP MODAL STYLES --- */
+
+/* The dark semi-transparent background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Hidden by default */
+    pointer-events: none;
+    /* Can't be clicked when hidden */
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Make the modal visible when this class is added */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* The white content box of the popup */
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+.modal-content #modal-body p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* The 'X' close button */
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    font-weight: var(--fw-semi);
+    color: var(--secondary-light);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close-button:hover {
+    color: var(--secondary);
+}
+
+/* Prevents the main page from scrolling when the modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* START: Fix for "Fund a Specific Need" layout on large screens */
+@media (min-width: 48.0625rem) {
+
+
+    .fund-goal-item {
+        /* Use CSS Grid for powerful layout control */
+        display: grid;
+
+        /* Define a 3-row layout: image, content (stretches), button */
+        grid-template-rows: auto 1fr auto;
+
+        /* Name the grid areas for easy placement */
+        grid-template-areas:
+            "image"
+            "content"
+            "button";
+
+        /* Ensures all cards in a row have the same height for a clean look */
+        height: 100%;
+    }
+
+    .fund-goal-item .fund-goal-left {
+        /* This special property makes the wrapper invisible to the grid,
+           allowing its children (the image and button) to be placed individually. */
+        display: contents;
+    }
+
+
+    .fund-goal-item .fund-goal-carousel {
+        /* Places the image carousel in the 'image' row */
+        grid-area: image;
+        width: 100%;
+    }
+
+    .fund-goal-item .fund-goal-content {
+        /* Places the text block in the 'content' row */
+        grid-area: content;
+        width: 100%;
+        /* Vertically align content to the top of its area */
+        align-self: start;
+    }
+
+    .fund-goal-item .contribute-button {
+        /* Places the button in the 'button' row */
+        grid-area: button;
+
+        /* Horizontally center the button within its grid area */
+        justify-self: center;
+
+        /* Add some vertical spacing */
+        margin-top: 1px;
+        margin-bottom: var(--space-sm);
+
+        max-width: var(--space-2xl);
+    }
+}
+
+/* END: Fix for "Fund a Specific Need" layout */
+
+/* ==========================================================================
+   NEW "SHIMMER" ANIMATION FOR HIGHLIGHTED AMOUNT
+   ========================================================================== */
+
+/* ==========================================================================
+   NEW "ANIMATED TEXT FILL" EFFECT
+   ========================================================================== */
+
+/* This rule applies the animated gradient fill to the text */
+.highlight-amount {
+    color: var(--primary);
+    vertical-align: middle;
+}
+
+/* --- Testimonials Section Styling --- */
+.testimonials-section {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    /* Subtle gradient */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative background element */
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(40, 167, 69, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.testimonials-section h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--secondary);
+    margin-bottom: var(--space-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    border-color: rgba(40, 167, 69, 0.15);
+}
+
+.quote-icon {
+    font-family: 'Times New Roman', serif;
+    font-size: 5rem;
+    color: rgba(40, 167, 69, 0.15);
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    /* Moved to right for a cleaner look */
+    line-height: 1;
+    pointer-events: none;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    color: var(--secondary-light);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 700;
+    color: var(--secondary);
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+}
+
+.author-role {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* --- Newsletter Section Styling --- */
+.newsletter-section {
+    padding: 6rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Texture overlay */
+.newsletter-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.newsletter-content {
+    max-width: 45rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.newsletter-section h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-section p {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 1.1rem 1.5rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.newsletter-form input[type="email"]:focus {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.subscribe-button {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    padding: 1.1rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.subscribe-button:hover {
+    background-color: #1a252f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.subscribe-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .newsletter-section {
+        padding: 2.5rem 0.75rem;
+    }
+
+    .newsletter-content {
+        padding: 1.5rem 1rem;
+        border-radius: 14px;
+    }
+
+    .newsletter-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .newsletter-section p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+    }
+
+    .newsletter-form input[type="email"] {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .subscribe-button {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .quote-icon {
+        font-size: 2.5rem;
+        top: 0.5rem;
+        right: 0.75rem;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+    }
+
+    .testimonial-author {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+        padding-top: 0.75rem;
+    }
+
+    .testimonial-author .author-name {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-author .author-role {
+        font-size: 0.8rem;
+    }
+
+    .testimonials-section {
+        padding: var(--space-md) 0.75rem;
+    }
+
+    .testimonials-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--space-md);
+    }
+}

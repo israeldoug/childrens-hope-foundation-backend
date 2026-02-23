@@ -1,0 +1,88 @@
+==============================================================================
+CHILDREN'S HOPE FOUNDATION — BACKEND REQUIREMENTS AUDIT
+==============================================================================
+Date: February 17, 2026
+Audited Files: index.html, donate.html, thank_you.html, home.js, donate.js,
+               thank_you.js, common.css, home.css, donate.css, thank_you.css,
+               sitemap.xml, robots.txt
+
+This document lists every area of the site that currently has NO backend
+support and needs server-side work to become a fully functional website.
+
+
+==============================================================================
+1. DONATION PROCESSING & DATA COLLECTION (CRITICAL)
+==============================================================================
+File: donate.js (lines 100-114), donate.html
+Current behaviour:
+  - User picks an amount and clicks "I've Made the Transfer"
+  - The data is saved to localStorage and the user is redirected to
+    thank_you.html. No data is sent anywhere.
+  - The bank account number (1234567890) is a placeholder.
+  - The donation form collects ONLY: amount and goal, not the donor email.
+
+What needs to be built:
+  [x] A real bank account number
+  [ ] Add an input field for the donor's email address on the donation form
+  [ ] A simple backend API endpoint (e.g. POST /api/donations) to receive
+      the amount, goal, timestamp, and the donor's email address.
+  [ ] Store the records in a simple database (like SQLite)
+==============================================================================
+Current behaviour:
+  - The site is a collection of static HTML, CSS, and JS files
+  - sitemap.xml references https://www.childrenshopefoundation.org/ but
+    the site is not deployed anywhere
+  - robots.txt is set up correctly
+
+What needs to be built:
+  [ ] Choose a hosting platform:
+        - Static-only (no backend): Netlify, Vercel, GitHub Pages, Cloudflare
+          Pages — quickest to deploy but won't support backend features
+        - With backend: Render, Railway, DigitalOcean, AWS, Heroku
+  [ ] Set up the domain: childrenshopefoundation.org (or similar)
+  [ ] SSL certificate (HTTPS) — most hosts provide this free
+  [ ] Set up DNS records
+  [ ] Configure proper caching headers for CSS/JS files
+  [ ] Set up CI/CD pipeline for automatic deployment on push
+
+
+==============================================================================
+==============================================================================
+3. SECURITY CONSIDERATIONS
+==============================================================================
+Current behaviour:
+  - No server-side code exists, so there's nothing to exploit yet — but once
+    a backend is added, these must be addressed.
+
+What needs to be built:
+  [ ] CSRF protection on all forms (donation, newsletter)
+  [ ] Rate limiting on API endpoints to prevent spam/abuse
+  [ ] Input sanitization (prevent XSS and SQL injection)
+  [ ] HTTPS enforcement (redirect HTTP to HTTPS)
+  [ ] Secure storage of any sensitive data (donor info, admin passwords)
+  [ ] CORS configuration for API endpoints
+  [ ] Environment variables for secrets (API keys, DB credentials)
+  [ ] Regular security updates for dependencies
+
+
+
+RECOMMENDED IMPLEMENTATION ORDER
+==============================================================================
+
+1. Set up a simple backend framework (Node.js/Express) and SQLite database.
+2. Build connection to frontend newsletter form to collect subscriber emails.
+3. Update donation form to collect donor email and send data to DB.
+4. Add og:image properties to improve social links.
+
+==============================================================================
+TECHNOLOGY RECOMMENDATIONS (COMPLETELY FREE)
+==============================================================================
+Backend:       Node.js + Express (Open source, free)
+Database:      SQLite (Built-in file, 100% free forever)
+Hosting:       Glitch, Render (Free Tier), or Fly.io (Free Tier)
+Domain:        Use the free subdomain provided by the host
+
+
+==============================================================================
+END OF AUDIT
+==============================================================================

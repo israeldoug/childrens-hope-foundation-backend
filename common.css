@@ -1,0 +1,366 @@
+/* =========================================
+   COMMON STYLES & DESIGN TOKENS
+   Propagated to: index.html, donate.html, thank_you.html
+   ========================================= */
+
+:root {
+    /* Brand Colors */
+    --primary-green: #28a745;
+    --primary-green-dark: #218838;
+    --primary-blue: #2a7ae4;
+    --primary-blue-dark: #174a8c;
+
+    /* Semantic Colors - Default to Green for Home/General */
+    --primary: var(--primary-green);
+    --primary-dark: var(--primary-green-dark);
+    --secondary: #2c3e50;
+    /* Navy */
+    --secondary-light: #555555;
+    /* Grey text */
+    --accent: #f9b233;
+    /* Orange/Yellow */
+
+    /* Backgrounds */
+    --bg-body: #f4f4f4;
+    --bg-surface: #ffffff;
+    --bg-light: #f8f9fa;
+
+    /* Typography */
+    --font-primary: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Global Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-body);
+    color: var(--secondary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-primary);
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+/* =========================================
+   HEADER STYLES
+   ========================================= */
+.main-header {
+    width: 100%;
+    padding: 15px 40px;
+    background-color: var(--bg-surface);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Default for home */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Adjust for pages with back button (donate/thank_you) */
+body.page-flow .main-header {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+/* Back Arrow Button (Donate/Thank You) */
+.back-arrow-btn {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface);
+    color: var(--secondary);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.back-arrow-btn:hover {
+    background: #e9f7ef;
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 12px 0 rgba(40, 167, 69, 0.15);
+    transform: translateY(-1px);
+}
+
+.back-arrow-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.back-arrow-btn svg {
+    display: block;
+}
+
+/* =========================================
+   FOOTER STYLES
+   ========================================= */
+.site-footer {
+    background-color: #1a252f;
+    /* Dark Navy for footer */
+    color: #ecf0f1;
+    padding: 4rem 5% 2rem;
+    font-family: var(--font-body);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-column h3 {
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-green);
+    border-radius: 2px;
+}
+
+.footer-column p {
+    color: #bdc3c7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary-green);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .main-header {
+        padding: 12px 20px;
+    }
+}
+
+/* =========================================
+   UTILITIES & ANIMATIONS
+   ========================================= */
+.visually-hidden {
+    /* For screen readers */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Background Floating Circles (Donate/Thank You) */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-animation__circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    /* Subtle */
+    filter: blur(40px);
+    /* Soft blur */
+    animation: floatCircle 20s infinite ease-in-out;
+}
+
+@keyframes floatCircle {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    33% {
+        transform: translate(30px, -50px);
+    }
+
+    66% {
+        transform: translate(-20px, 20px);
+    }
+}
+
+/* Modal Core Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Skip Navigation Link */
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background: var(--primary-green);
+    color: white;
+    padding: 10px 15px;
+    z-index: 9999;
+    font-weight: bold;
+    transition: top 0.3s ease;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+/* Mobile Header Updates */
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .logo {
+        font-size: 1rem;
+    }
+}
