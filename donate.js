@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('pendingDonation', JSON.stringify(donationData));
 
             // Send to backend
-            fetch('http://localhost:3000/api/donations', {
+            fetch('/api/donations', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(donationData)
