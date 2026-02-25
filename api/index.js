@@ -68,7 +68,7 @@ app.post('/api/donations', (req, res) => {
     }
 
     const sql = 'INSERT INTO donations (email, amount, goal) VALUES ($1, $2, $3) RETURNING id';
-    pool.query(sql, [email, amount, goal], (err, result) => {
+    pool.query(sql, [email, amount, goal], async (err, result) => {
         if (err) {
             console.error(err.stack);
             return res.status(500).json({ error: 'Failed to record donation' });
@@ -154,14 +154,13 @@ app.post('/api/donations', (req, res) => {
             `
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Email failed to send:', error);
-                // We still return 201 because the donation was recorded, even if the email failed
-            } else {
-                console.log('Donation email sent: ' + info.response);
-            }
-        });
+        try {
+            const info = await transporter.sendMail(mailOptions);
+            console.log('Donation email sent: ' + info.response);
+        } catch (error) {
+            console.error('Email failed to send:', error);
+            // We still return 201 because the donation was recorded, even if the email failed
+        }
 
         res.status(201).json({ id: insertedId, message: 'Donation recorded successfully' });
     });
@@ -176,7 +175,7 @@ app.post('/api/newsletter', (req, res) => {
     }
 
     const sql = 'INSERT INTO newsletter (email) VALUES ($1) RETURNING id';
-    pool.query(sql, [email], (err, result) => {
+    pool.query(sql, [email], async (err, result) => {
         if (err) {
             // Check if it's a unique constraint violation (Postgres code 23505)
             if (err.code === '23505') {
@@ -243,13 +242,12 @@ app.post('/api/newsletter', (req, res) => {
             `
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Email failed to send:', error);
-            } else {
-                console.log('Newsletter welcome email sent: ' + info.response);
-            }
-        });
+        try {
+            const info = await transporter.sendMail(mailOptions);
+            console.log('Newsletter welcome email sent: ' + info.response);
+        } catch (error) {
+            console.error('Email failed to send:', error);
+        }
 
         res.status(201).json({ id: insertedId, message: 'Subscribed successfully' });
     });
