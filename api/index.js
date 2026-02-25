@@ -2,25 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
-const path = require('path');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from the current directory
-app.use(express.static(path.join(__dirname, '')));
-
 // Initialize PostgreSQL Database Pool
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: process.env.DATABASE_URL && !process.env.DATABASE_URL.includes('localhost') 
-        ? { rejectUnauthorized: false } 
+    ssl: process.env.DATABASE_URL && !process.env.DATABASE_URL.includes('localhost')
+        ? { rejectUnauthorized: false }
         : false
 });
 
@@ -260,7 +255,18 @@ app.post('/api/newsletter', (req, res) => {
     });
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Health check endpoint (for UptimeRobot keep-alive pings)
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+// Start the server if listening directly (useful for local testing)
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+// Export the Express API
+module.exports = app;
